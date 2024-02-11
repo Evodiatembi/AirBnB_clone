@@ -8,16 +8,22 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        """instantiation construct of attribute                           """
+        """
+        instantiation construct of attribute
+        """
+        mode_time = '%Y-%m-%dT%H:%M:%S.%f'
         if kwargs:
             for key, value in kwargs.item():
-                if key = "__class__":
+                if key == "__class__":
                     continue
-                if key in("updated_at", ."created_at"):
+                elif key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.strtime(value, mode_time))
+                else:
                     setattr(self, key, value)
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """
