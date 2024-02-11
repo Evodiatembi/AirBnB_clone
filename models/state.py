@@ -8,5 +8,5 @@ class State(BaseModel):
         name (string): name of the state
     """
  def __init__(self, name):
-     self.name = " "
+     self.name = ""
 

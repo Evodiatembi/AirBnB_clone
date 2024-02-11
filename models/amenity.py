@@ -8,4 +8,4 @@ class Amenity(BaseModel):
         name (string): name of Amenity
     """
  def __init__(self, name):
-     self.name = " "
+     self.name = ""
