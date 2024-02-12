@@ -12,7 +12,7 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    continue  # skip it
+                    continue
 
                 if key in ["created_at", "updated_at"]:
                     value = datetime.fromisoformat(value)
@@ -29,7 +29,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.utcnow()
-        models.storage.save()
+       # models.storage.save()
 
     def to_dict(self):
         # instance_dict = dict(self.__dict__)
