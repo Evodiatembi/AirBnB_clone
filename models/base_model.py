@@ -12,7 +12,7 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    continue
+                    continue  # skip it
 
                 if key in ["created_at", "updated_at"]:
                     value = datetime.fromisoformat(value)
