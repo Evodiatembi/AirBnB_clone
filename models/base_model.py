@@ -2,7 +2,7 @@
 
 import uuid
 
-# from uuid import uuid4
+from uuid import uuid4
 from datetime import datetime
 import models
 
@@ -29,10 +29,10 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.utcnow()
-       # models.storage.save()
+        models.storage.save()
 
     def to_dict(self):
-        # instance_dict = dict(self.__dict__)
+
         inst_dict = self.__dict__.copy()
 
         inst_dict["__class__"] = self.__class__.__name__

@@ -13,35 +13,28 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    __our_classes = {
-        "BaseModel": BaseModel,
-    }
-
-    def all(self):
-        return self.__objects
-
     def new(self, obj):
         """
         sets in __objects the obj with key <obj class name>.id
         """
         class_name = obj.__class__.__name__
-        instance_id = obj.id
+        key = "{}.{}".format(class_name, obj.id)
+        FileStorage.__objects[key] = obj
 
-        key = f"{class_name}.{instance_id}"
-
-        self.__objects[key] = obj
+    def all(self):
+        return FileStorage.__objects
 
     def save(self):
         """
         this method saves and serializes __objects
         to the JSON file (path: __file_path)
         """
-        new_dict = {}
+        all_new_obj = FileStorage.__onjects
+        obj_dict = {}
+        for ob in all_new_obj.keys:
+            obj_dict[ob] = all_new_obj[ob].to_dict()
 
-        for key, value in self.__objects.items():
-            new_dict[key] = value.to_dict()
-
-        with open(self.__file_path, "w", encoding="utf-8") as file:
+        with open(FileStorag.__self.__file_path, "w", encoding="utf-8") as file:
             json.dump(new_dict, file, indent=4)
 
     def reload(self):
@@ -51,13 +44,14 @@ class FileStorage:
         do nothing. If the file doesn’t exist, no exception
         should be raised)
         """
-        try:
-            with open(self.__file_path, "r", encoding="utf-8") as file:
-                my_objects = json.load(file)
-
-            for key, value in my_objects.items():
-                class_name = value["__class__"]
-
-                self.__objects[key] = self.__our_classes[class_name](**value)
+        if os.path.isfile(FileStorage.__file_path):
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
+                try:
+                    obj_dict = json.load(file)
+                    for key, value in obj_dict.items():
+                        class_name, obj_id key.split('.')
+                        clas = eval(class_name)
+                        old_inst = clas(**value)
+                        FilStorage.__objects[key] = created_inst
         except FileNotFoundError:
-            pass
+            pass 
