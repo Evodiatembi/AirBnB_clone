@@ -5,8 +5,8 @@ import shlex
 import sys
 from models.base_model import BaseModel
 from models.engine import storage
-#from models.user import user
-#from models import storage
+# from models.user import user
+# from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -120,10 +120,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """
-        This works similarly like the EOF
-        used to exit the shell
-        """
+        """This works similarly like the EOF input"""
         return True
 
 
