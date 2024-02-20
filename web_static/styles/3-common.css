@@ -1,0 +1,9 @@
+body {
+    background-image: url('icon.png');
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
