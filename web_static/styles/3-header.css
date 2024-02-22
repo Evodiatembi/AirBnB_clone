@@ -3,7 +3,14 @@ header {
     height: 70px;
     width: 100%; 
     border-bottom: bottom 1px #CCCCCC;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: left 20px center; 
+}
+.logo {
+    width: 142px;
+    height: 60px;
+    background-image: url("logo.png");
+    background-image: no-repeat ;
+    background-image: center;
+    padding-left: 0px;
 }
